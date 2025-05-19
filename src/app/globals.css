@@ -7,8 +7,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-montserrat);
+  --font-mono: var(--font-montserrat);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -120,4 +120,21 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.primary-button {
+  @apply transform cursor-pointer rounded-lg bg-zinc-900 font-semibold text-white shadow-md transition-all duration-150 ease-in-out hover:bg-zinc-800 focus:ring-2 focus:ring-zinc-500 focus:ring-offset-2 focus:ring-offset-zinc-50 focus:outline-none active:scale-[0.98] sm:px-8 sm:py-3.5 sm:text-base;
+}
+
+.secondary-button {
+  @apply transform cursor-pointer rounded-lg border border-zinc-300 bg-white font-semibold text-zinc-900 shadow-sm transition-all duration-150 ease-in-out hover:border-zinc-400 hover:bg-zinc-50 focus:ring-2 focus:ring-zinc-500 focus:ring-offset-2 focus:ring-offset-zinc-50 focus:outline-none active:scale-[0.98] sm:px-8 sm:py-3.5 sm:text-base;
+}
+
+.mask-text {
+  position: relative;
+  display: inline-block;
+}
+
+.mask-text::before {
+  @apply absolute top-[5px] left-0 -z-[1] h-full w-full -rotate-1 bg-blue-300 content-[''];
 }

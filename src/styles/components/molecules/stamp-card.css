@@ -1,0 +1,3 @@
+.prompt-card {
+  @apply relative flex max-w-[300px] flex-col rounded-xl border border-white bg-gray-50 p-[24px];
+}
