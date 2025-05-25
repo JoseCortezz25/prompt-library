@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { StampCard } from '../components/molecules/prompt-card';
+import { PromptCard } from '../components/molecules/prompt-card';
 
 const meta = {
   title: 'Example/StampCard',
-  component: StampCard,
+  component: PromptCard,
   parameters: {
     layout: 'centered'
   },
   tags: ['autodocs']
-} satisfies Meta<typeof StampCard>;
+} satisfies Meta<typeof PromptCard>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
