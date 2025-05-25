@@ -14,14 +14,9 @@ export const PromptCard = ({
   className = ''
 }: PromptCardProps) => {
   return (
-    <article
-      className={cn(
-        'flex flex-col overflow-hidden rounded-2xl border-[1px] border-zinc-200/50 bg-transparent p-[16px] lg:w-[350px]',
-        className
-      )}
-    >
+    <article className={cn('flex flex-col', className)}>
       {image && (
-        <div className="relative h-52 w-full overflow-hidden rounded-lg bg-slate-100 md:h-56">
+        <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-slate-100">
           <img
             src={image}
             alt={`Illustration for ${title}`}

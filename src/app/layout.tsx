@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
+import { Footer } from '@/components/molecules/footer';
+import { Navbar } from '@/components/molecules/navbar';
 import './globals.css';
 
 const montserrat = Montserrat({
@@ -20,7 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.className} bg-zinc-50 antialiased`}>
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

@@ -1,7 +1,8 @@
 'use client';
 import { Heading } from '@/components/atoms/heading';
-import { Icon } from '@/components/atoms/icon';
+import { Headline } from '@/components/molecules/headline';
 import { PromptCard } from '@/components/molecules/prompt-card';
+import { Section } from '@/components/organisms/section';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -18,7 +19,7 @@ export default function Home() {
 
   return (
     <main>
-      <section className="relative flex min-h-screen items-center justify-center overflow-hidden p-4 selection:bg-zinc-500 selection:text-white">
+      <section className="relative flex min-h-[calc(100dvh-60px)] items-center justify-center overflow-hidden p-4 selection:bg-zinc-500 selection:text-white">
         <Image
           src={circleImages.topLeft}
           alt="Decorative circle top left"
@@ -75,22 +76,14 @@ export default function Home() {
         </main>
       </section>
 
-      <section
-        className="container mx-auto flex flex-col items-center justify-center gap-4"
-        id="images"
-      >
-        <div className="mb-10 flex flex-col items-center justify-center gap-8 md:flex-row">
-          <div className="flex items-center gap-2">
-            <Icon icon="/images/album-stamp.png" variant="lg" />
-            <Heading variant="h2" type="title-lg">
-              Imagenes
-            </Heading>
-          </div>
+      <Section id="images">
+        <div className="mb-10 flex flex-col space-y-5">
+          <Headline icon="/images/album-stamp.png" title="Imagenes" />
 
           <Heading
             variant="p"
             type="paragraph"
-            className="w-[85%] text-center md:w-[50%] md:text-left"
+            className="w-full text-pretty sm:w-[85%] md:w-[60%]"
           >
             Descubre una colección de prompts diseñados para potenciar la
             creatividad y eficiencia en la interacción con inteligencias
@@ -98,7 +91,7 @@ export default function Home() {
           </Heading>
         </div>
 
-        <div className="grid grid-cols-1 justify-start gap-4 px-6 md:grid-cols-3 md:px-0">
+        <div className="grid grid-cols-1 justify-start gap-9 md:grid-cols-3">
           <PromptCard
             image="https://placehold.co/600x400"
             title="Category 1"
@@ -125,21 +118,22 @@ export default function Home() {
             description="This is a prompt"
           />
         </div>
-      </section>
 
-      <section className="container mx-auto mt-[9rem] flex flex-col items-center justify-center gap-4">
-        <div className="mb-10 flex flex-col items-center justify-center gap-8 md:flex-row">
-          <div className="flex items-center gap-2">
-            <Icon icon="/images/pen-and-table.png" variant="lg" />
-            <Heading variant="h2" type="title-lg">
-              Textos
-            </Heading>
-          </div>
+        <div className="mt-5 flex justify-center">
+          <Button variant="primary" className="w-full sm:w-auto">
+            Get Started
+          </Button>
+        </div>
+      </Section>
+
+      <Section>
+        <div className="mb-10 flex flex-col space-y-5">
+          <Headline icon="/images/pen-and-table.png" title="Prompts" />
 
           <Heading
             variant="p"
             type="paragraph"
-            className="w-[85%] text-center md:w-[50%] md:text-left"
+            className="w-full text-pretty sm:w-[85%] md:w-[60%]"
           >
             Descubre una colección de prompts diseñados para potenciar la
             creatividad y eficiencia en la interacción con inteligencias
@@ -147,14 +141,14 @@ export default function Home() {
           </Heading>
         </div>
 
-        <div className="grid grid-cols-1 justify-start gap-4 px-6 md:grid-cols-3 md:px-0">
+        <div className="mx-auto grid grid-cols-1 justify-start gap-9 md:max-w-5xl md:grid-cols-3 lg:container">
           <PromptCard title="Category 1" description="This is a prompt" />
           <PromptCard title="Category 1" description="This is a prompt" />
           <PromptCard title="Category 1" description="This is a prompt" />
           <PromptCard title="Category 1" description="This is a prompt" />
           <PromptCard title="Category 1" description="This is a prompt" />
         </div>
-      </section>
+      </Section>
     </main>
   );
 }
