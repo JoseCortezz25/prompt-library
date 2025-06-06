@@ -138,3 +138,19 @@
 .mask-text::before {
   @apply absolute top-[5px] left-0 -z-[1] h-full w-full -rotate-1 bg-blue-300 content-[''];
 }
+
+.external-link {
+  @apply rounded-full border px-6 py-3 font-bold text-white [&>button]:flex [&>button]:items-center [&>button]:justify-center [&>button]:gap-3;
+
+  svg {
+    @apply h-5 w-5;
+  }
+}
+
+.discord-link {
+  @apply border border-[#5865F2] bg-[#5865F2];
+}
+
+.telegram-link {
+  @apply border border-[#24A1DE] bg-[#2599d3]/80;
+}

@@ -1,13 +1,13 @@
 'use client';
-import { Heading } from '@/components/atoms/heading';
-import { Headline } from '@/components/molecules/headline';
-import { PromptCard } from '@/components/molecules/prompt-card';
-import { Section } from '@/components/organisms/section';
+
 import { Button } from '@/components/ui/button';
+import { FormEvent, useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Discord, Telegram } from '@/components/atoms/icons';
 
 export default function Home() {
+  const [email, setEmail] = useState('');
+
   const circleImages = {
     topLeft: '/images/image-1.png',
     topRight: '/images/image-2.png',
@@ -16,6 +16,11 @@ export default function Home() {
   };
   const commonCircleClass = 'absolute hidden md:block pointer-events-none';
   const circleSize = 100;
+
+  const handleSendEmail = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setEmail((e.target as HTMLFormElement).email.value);
+  };
 
   return (
     <main>
@@ -51,104 +56,72 @@ export default function Home() {
 
         <main className="z-10 flex max-w-3xl flex-col items-center text-center">
           <div
-            className="mb-4 inline-flex items-center gap-2 rounded-full bg-zinc-900 px-3.5 py-1.5 text-xs font-semibold text-white shadow-md"
+            className="mb-4 inline-flex items-center gap-1 rounded-full bg-zinc-900 px-3.5 py-1.5 text-xs font-semibold text-white shadow-md"
             tabIndex={0}
           >
-            <span className="font-bold">CREATE FOR FAST</span>
+            <span className="font-bold">Prueba PromptBot ahora</span>
           </div>
-
           <h1 className="mb-5 font-sans text-4xl font-bold tracking-tight text-balance text-zinc-900 sm:text-5xl md:mb-6 md:text-6xl">
             Transforma tus interacciones con IA con{' '}
             <span className="mask-text">prompts eficientes</span>
           </h1>
 
           <p className="mb-8 max-w-xl font-sans text-base leading-relaxed text-zinc-600 sm:text-lg md:mb-10 md:text-xl">
-            Descubre una colección de prompts diseñados para potenciar la
-            creatividad y eficiencia en la interacción con inteligencias
-            artificiales.
+            Descubre una nueva manera de crear prompts de forma facil, efectiva
+            y sencilla.
           </p>
 
-          <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
-            <Link href="/#images">
-              <Button variant="primary">Get Started</Button>
-            </Link>
-          </div>
+          {!email && (
+            <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
+              <form
+                className="flex gap-2 rounded-full border border-zinc-900"
+                onSubmit={handleSendEmail}
+              >
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Unete a la waitlist"
+                  className="focus:shadow-outline focus-visible:shadow-outline w-full border-none px-6 py-3 text-[14px] text-zinc-900 placeholder:text-zinc-800 focus-within:outline-none focus:border-none focus:ring-0 focus-visible:border-none focus-visible:ring-0"
+                />
+                <Button variant="primary" type="submit">
+                  Unirme
+                </Button>
+              </form>
+            </div>
+          )}
+
+          {email && (
+            <div className="mt-8 flex flex-col items-center gap-2">
+              <p className="font-bold text-zinc-900">Pruebalo ahora</p>
+              <div className="flex flex-col gap-4 md:flex-row">
+                <a
+                  href="http://"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="external-link discord-link"
+                >
+                  <button>
+                    Probar en Discord
+                    <Discord />
+                  </button>
+                </a>
+
+                <a
+                  href="http://"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="external-link telegram-link"
+                >
+                  <button>
+                    Probar en Telegram
+                    <Telegram />
+                  </button>
+                </a>
+              </div>
+            </div>
+          )}
         </main>
       </section>
-
-      <Section id="images">
-        <div className="mb-10 flex flex-col space-y-5">
-          <Headline icon="/images/album-stamp.png" title="Imagenes" />
-
-          <Heading
-            variant="p"
-            type="paragraph"
-            className="w-full text-pretty sm:w-[85%] md:w-[60%]"
-          >
-            Descubre una colección de prompts diseñados para potenciar la
-            creatividad y eficiencia en la interacción con inteligencias
-            artificiales.
-          </Heading>
-        </div>
-
-        <div className="grid grid-cols-1 justify-start gap-9 md:grid-cols-3">
-          <PromptCard
-            image="https://placehold.co/600x400"
-            title="Category 1"
-            description="This is a prompt"
-          />
-          <PromptCard
-            image="https://placehold.co/600x400"
-            title="Category 1"
-            description="This is a prompt"
-          />
-          <PromptCard
-            image="https://placehold.co/600x400"
-            title="Category 1"
-            description="This is a prompt"
-          />
-          <PromptCard
-            image="https://placehold.co/600x400"
-            title="Category 1"
-            description="This is a prompt"
-          />
-          <PromptCard
-            image="https://placehold.co/600x400"
-            title="Category 1"
-            description="This is a prompt"
-          />
-        </div>
-
-        <div className="mt-5 flex justify-center">
-          <Button variant="primary" className="w-full sm:w-auto">
-            Get Started
-          </Button>
-        </div>
-      </Section>
-
-      <Section>
-        <div className="mb-10 flex flex-col space-y-5">
-          <Headline icon="/images/pen-and-table.png" title="Prompts" />
-
-          <Heading
-            variant="p"
-            type="paragraph"
-            className="w-full text-pretty sm:w-[85%] md:w-[60%]"
-          >
-            Descubre una colección de prompts diseñados para potenciar la
-            creatividad y eficiencia en la interacción con inteligencias
-            artificiales.
-          </Heading>
-        </div>
-
-        <div className="mx-auto grid grid-cols-1 justify-start gap-9 md:max-w-5xl md:grid-cols-3 lg:container">
-          <PromptCard title="Category 1" description="This is a prompt" />
-          <PromptCard title="Category 1" description="This is a prompt" />
-          <PromptCard title="Category 1" description="This is a prompt" />
-          <PromptCard title="Category 1" description="This is a prompt" />
-          <PromptCard title="Category 1" description="This is a prompt" />
-        </div>
-      </Section>
     </main>
   );
 }
